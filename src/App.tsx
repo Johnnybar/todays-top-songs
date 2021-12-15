@@ -4,9 +4,9 @@ import { SongList } from "./SongList";
 
 function App() {
   return (
-    <ul>
+    <>
       <SongList />
-    </ul>
+    </>
   );
 }
 

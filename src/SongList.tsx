@@ -39,7 +39,7 @@ export function SongList(): ReactElement {
   };
 
   return (
-    <ul>
+    <ul className="container">
       {allSongs &&
         allSongs.map((song: Song) => (
           <SongListItem key={song.id} song={song} likeSong={likeSong} />
