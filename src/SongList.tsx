@@ -2,7 +2,9 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { SongListItem } from "./SongListItem";
 
 export function SongList(): ReactElement {
-  const [allSongs, setSongs] = useState<Song[]>([]);
+  const [allSongs, setSongs] = useState<Song[] | undefined>();
+  const [updatedList, setUpdatedList] = useState<Boolean>(false);
+
   useEffect(() => {
     fetch(`https://api-stg.jam-community.com/song/trending`, {
       method: "GET",
@@ -12,41 +14,36 @@ export function SongList(): ReactElement {
         setSongs(response);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [updatedList]);
 
-  const addToLiked = (selectedSong: Song) => {
-    const newSongs = allSongs.map((song) => {
-      if (song === selectedSong) {
-        const requestOptions = {
-          method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: `id=${song.id}`,
-        };
-        const queryString =
-          "apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8";
-        fetch(
-          `https://api-stg.jam-community.com/interact/like?${queryString}`,
-          requestOptions
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((error) => console.log("an error has occurred: ", error));
-        return {
-          ...song,
-          liked: !song.liked,
-        };
-      }
-      return song;
-    });
-    setSongs(newSongs);
+  const likeSong = (selectedSong: Song) => {
+    if (allSongs) {
+      const songToLike = allSongs.filter((song) => song === selectedSong);
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `id=${songToLike[0].id}`,
+      };
+
+      const queryString = "apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8";
+      fetch(
+        `https://api-stg.jam-community.com/interact/like?${queryString}`,
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then(() => {
+          setUpdatedList(true);
+        })
+        .catch((error) => console.log("an error has occurred: ", error));
+    }
   };
+
   return (
     <ul>
-      {allSongs.map((song) => (
-        <SongListItem key={song.id} song={song} addToLiked={addToLiked} />
-      ))}
+      {allSongs &&
+        allSongs.map((song: Song) => (
+          <SongListItem key={song.id} song={song} likeSong={likeSong} />
+        ))}
     </ul>
   );
 }
