@@ -11,37 +11,47 @@ export function SongListItem({ song, likeSong }: Props): ReactElement {
 
   useEffect(() => {}, [color]);
   return (
-    <li className="loudly-song-list-item col-sm-4">
-      <div className="container">
+    <li className="loudly-song-list-item col-sm-6 col-md-4 ">
+      <div
+        className="loudly-song-list-item__container container"
+        id="loudly-song-list-item__container"
+      >
         <div className="loudly-song-list-item__top row">
           <img
-            className="img-circle col-sm-4"
+            className="col-sm-12 col-md-4 loudly-song-list-item__thumbnail"
             src={song.cover_image_path}
-            alt=""
+            alt="song-cover"
           />
-          <div className="col-sm-8">
-            <h4 style={color ? { color: "red" } : { color: "blue" }}>
+          <div className="col-sm-12 col-md-8">
+            <h4
+              style={color ? { color: "red" } : { color: "blue" }}
+              className="loudly-song-list-item__title"
+            >
               {song.name}
             </h4>
-            <p>{song.artist_name}</p>
+            <p className="loudly-song-list-item__artist">{song.artist_name}</p>
           </div>
         </div>
 
-        <div className="loudly-song-list-item__bottom row">
-          <div className="col-sm-6 text-center ">
+        <div
+          className="loudly-song-list-item__bottom row"
+          id="loudly-song-list-item__bottom"
+        >
+          <div className="col-sm-12 col-md-6 text-center ">
             <AudioPlayer audio={song.music_file_path} />
           </div>
-          <div className="col-sm-6">
+          <div className="col-sm-12 col-md-6">
             <button
+              className="loudly-song-list-item__like-button"
               type="button"
               name="Like"
+              //set Animation here
               onClick={() => {
                 likeSong(song);
                 setColor(!color);
               }}
             >
-              Like this track
-              {color}
+              <i className="fa fa-thumbs-up"></i> Like{color}
             </button>
           </div>
         </div>
