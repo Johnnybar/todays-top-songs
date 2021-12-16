@@ -1,4 +1,12 @@
-//add vars
+//color vars
+$loudly-light-grey: #d3d3d3;
+$loudly-grey: #00000029;
+$loudly-black: black;
+$loudly-white: white;
+$loudly-green: #04f8c2;
+$loudly-light-green: #b0e975;
+
+//utilities
 
 @function toRem($value) {
   $remValue: ($value / 16) + rem;
@@ -9,29 +17,126 @@ ul.loudly-song-list__list {
   list-style: none;
   padding: 0;
 }
-​
 //header
 
 .loudly-header {
   position: fixed;
+  z-index: 1;
   top: 0;
   width: 100%;
   height: toRem(100);
+  background: $loudly-black;
   &__heading {
-    color: white;
+    color: $loudly-white;
     font-size: toRem(32);
     padding: toRem(24) toRem(32);
     margin: 0;
   }
 }
 
+//content-wrapper
+
+.loudly-content-wrapper {
+  padding: toRem(60) 0 toRem(60) 0;
+  background-color: $loudly-black;
+  width: 100%;
+}
+
+//song-list
+.loudly-song-list {
+  &.container {
+    max-width: toRem(1280);
+    background-color: $loudly-white;
+    padding: toRem(40);
+  }
+
+  &__top-heading {
+    margin: toRem(40) 0;
+    position: relative;
+
+    overflow: hidden;
+    text-align: center;
+    &::before,
+    &::after {
+      position: absolute;
+      top: toRem(23);
+      overflow: hidden;
+      width: 50%;
+      height: toRem(1);
+      content: "\a0";
+      background-color: $loudly-black;
+    }
+    &::before {
+      margin-left: -50%;
+      text-align: right;
+    }
+  }
+}
+
+//song-list-item
+.loudly-song-list-item {
+  &__top,
+  &__bottom {
+    padding: toRem(20) toRem(10) toRem(20) toRem(10);
+  }
+  &__container {
+    box-shadow: toRem(5) toRem(5) toRem(2) $loudly-grey;
+    border: toRem(1) solid $loudly-light-grey;
+    margin-bottom: toRem(30);
+    //add specifity to overwrite some container css
+    &#loudly-song-list-item__container {
+      padding: 0;
+      margin-right: 0;
+    }
+  }
+  &__bottom {
+    background-image: linear-gradient(
+      200deg,
+      $loudly-green,
+      $loudly-light-green
+    );
+    width: 100%;
+    //add specifity to overwrite row margin
+
+    &#loudly-song-list-item__bottom {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    @media only screen and (max-device-width: 768px) {
+      padding-top: toRem(10);
+    }
+  }
+  &__artist {
+    font-size: toRem(16);
+  }
+  &__thumbnail {
+    height: 30%;
+  }
+
+  &__like-button {
+    background: $loudly-black;
+    border-radius: toRem(25);
+    border-color: transparent;
+    width: 100%;
+    height: toRem(54);
+    color: $loudly-white;
+    font-family: inherit;
+  }
+
+  &__audio-player {
+    width: 100%;
+  }
+}
+
 //footer
 
 .loudly-footer {
-  background-color: black;
+  background-color: $loudly-black;
   &__text {
     font-size: toRem(16);
-    color: white;
+    color: $loudly-white;
     padding-bottom: toRem(24);
     margin: 0;
   }
