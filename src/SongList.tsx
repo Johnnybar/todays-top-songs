@@ -5,6 +5,7 @@ export function SongList(): ReactElement {
   const [allSongs, setSongs] = useState<Song[] | undefined>();
   const [updatedList, setUpdatedList] = useState<Boolean>(false);
 
+  //retrieve song list, update on POST request
   useEffect(() => {
     fetch(`https://api-stg.jam-community.com/song/trending`, {
       method: "GET",
@@ -16,6 +17,7 @@ export function SongList(): ReactElement {
       .catch((error) => console.log(error));
   }, [updatedList]);
 
+  //send POST request on like, set updatedList to true => run GET request again
   const likeSong = (selectedSong: Song) => {
     if (allSongs) {
       const songToLike = allSongs.filter((song) => song === selectedSong);
@@ -30,7 +32,6 @@ export function SongList(): ReactElement {
         `https://api-stg.jam-community.com/interact/like?${queryString}`,
         requestOptions
       )
-        .then((response) => response.json())
         .then(() => {
           setUpdatedList(true);
         })
