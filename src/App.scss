@@ -1,8 +1,15 @@
+//add vars
+
 @function toRem($value) {
   $remValue: ($value / 16) + rem;
   @return $remValue;
 }
 
+ul.loudly-song-list__list {
+  list-style: none;
+  padding: 0;
+}
+​
 //header
 
 .loudly-header {
@@ -11,14 +18,21 @@
   width: 100%;
   height: toRem(100);
   &__heading {
-    font-size: toRem(30);
+    color: white;
+    font-size: toRem(32);
+    padding: toRem(24) toRem(32);
+    margin: 0;
   }
 }
 
 //footer
 
 .loudly-footer {
+  background-color: black;
   &__text {
     font-size: toRem(16);
+    color: white;
+    padding-bottom: toRem(24);
+    margin: 0;
   }
 }
