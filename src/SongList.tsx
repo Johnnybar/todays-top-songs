@@ -5,7 +5,7 @@ export function SongList(): ReactElement {
   const [allSongs, setSongs] = useState<Song[] | undefined>();
   const [updatedList, setUpdatedList] = useState<Boolean>(false);
 
-  //retrieve song list, update on POST request
+  //retrieve song list, update after POST request
   useEffect(() => {
     fetch(`https://api-stg.jam-community.com/song/trending`, {
       method: "GET",
@@ -40,7 +40,7 @@ export function SongList(): ReactElement {
   };
 
   return (
-    <div className="loudly-song-list container" style={{ maxWidth: "60rem" }}>
+    <div className="loudly-song-list container">
       <div className="row">
         <div className="col-sm-12 text-center">
           <h1 className="loudly-song-list__top-heading">Top 6 Songs</h1>

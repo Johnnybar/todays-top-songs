@@ -34,7 +34,7 @@ ul.loudly-song-list__list {
 
 .loudly-song-list {
   &.container {
-    max-width: toRem(1280);
+    max-width: toRem(960);
     background-color: $loudly-white;
     padding: toRem(40);
   }

@@ -9,7 +9,7 @@ interface Props {
 }
 export function SongListItem({ song, likeSong }: Props): ReactElement {
   const [clicked, setClicked] = useState<Boolean>(false);
-  //add notification when song has been liked
+  //add temporary notification when song has been liked
   useEffect(() => {
     const timer = setTimeout(() => setClicked(false), 3000);
     return () => clearTimeout(timer);
@@ -37,7 +37,6 @@ export function SongListItem({ song, likeSong }: Props): ReactElement {
             <p className="loudly-song-list-item__artist">{song.artist_name}</p>
           </div>
         </div>
-
         <div
           className="loudly-song-list-item__bottom row"
           id="loudly-song-list-item__bottom-primary"
@@ -46,7 +45,7 @@ export function SongListItem({ song, likeSong }: Props): ReactElement {
             <AudioPlayer audio={song.music_file_path} />
           </div>
           <div className="col-md-12 col-lg-6">
-            {/* like song on click and setClicked to true to enable notification */}
+            {/* like song on click and setClicked to true to enable temporary notification */}
             <motion.button
               className="loudly-song-list-item__like-button"
               type="button"
