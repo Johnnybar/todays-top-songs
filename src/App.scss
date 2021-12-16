@@ -65,6 +65,7 @@ ul.loudly-song-list__list {
 
 //song-list-item
 .loudly-song-list-item {
+  position: relative;
   &__top,
   &__bottom {
     padding: toRem(20) toRem(10) toRem(20) toRem(10);
@@ -120,6 +121,15 @@ ul.loudly-song-list__list {
 
   &__audio-player {
     width: 100%;
+  }
+
+  &__liked-notification {
+    background-color: $loudly-faded-black;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    font-size: toRem(32);
+    color: $loudly-white;
   }
 }
 
