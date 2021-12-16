@@ -47,10 +47,13 @@ export function SongList(): ReactElement {
         </div>
       </div>
       <ul className="loudly-song-list__list row">
-        {allSongs &&
+        {allSongs ? (
           allSongs.map((song: Song) => (
             <SongListItem key={song.id} song={song} likeSong={likeSong} />
-          ))}
+          ))
+        ) : (
+          <h1 className="text-center">Please wait while songs are loading</h1>
+        )}
       </ul>
     </div>
   );
