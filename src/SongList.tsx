@@ -39,11 +39,18 @@ export function SongList(): ReactElement {
   };
 
   return (
-    <ul className="container">
-      {allSongs &&
-        allSongs.map((song: Song) => (
-          <SongListItem key={song.id} song={song} likeSong={likeSong} />
-        ))}
-    </ul>
+    <div className="loudly-song-list container" style={{ maxWidth: "60rem" }}>
+      <div className="row">
+        <div className="col-sm-12 text-center">
+          <h1 className="loudly-song-list__top-heading">Top 6 Songs</h1>
+        </div>
+      </div>
+      <ul className="loudly-song-list__list row">
+        {allSongs &&
+          allSongs.map((song: Song) => (
+            <SongListItem key={song.id} song={song} likeSong={likeSong} />
+          ))}
+      </ul>
+    </div>
   );
 }
