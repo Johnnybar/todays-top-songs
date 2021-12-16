@@ -1,0 +1,24 @@
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
+
+//header
+
+.loudly-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: toRem(100);
+  &__heading {
+    font-size: toRem(30);
+  }
+}
+
+//footer
+
+.loudly-footer {
+  &__text {
+    font-size: toRem(16);
+  }
+}
