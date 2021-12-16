@@ -31,6 +31,7 @@ ul.loudly-song-list__list {
 }
 
 //song-list
+
 .loudly-song-list {
   &.container {
     max-width: toRem(1280);
@@ -45,7 +46,9 @@ ul.loudly-song-list__list {
     overflow: hidden;
     text-align: center;
 
-    //adds lines to sides of heading
+    /*
+  adds lines to sides of heading
+*/
     &::before,
     &::after {
       position: absolute;
@@ -64,6 +67,7 @@ ul.loudly-song-list__list {
 }
 
 //song-list-item
+
 .loudly-song-list-item {
   position: relative;
   &__top,
@@ -74,7 +78,11 @@ ul.loudly-song-list__list {
     box-shadow: toRem(5) toRem(5) toRem(2) $loudly-grey;
     border: toRem(1) solid $loudly-light-grey;
     margin-bottom: toRem(30);
-    //add specifity to overwrite some container css, allow full-width bottom
+
+    /*
+add specifity to overwrite some container css,
+allow full-width bottom
+*/
     &#loudly-song-list-item__container-primary {
       padding: 0;
       margin-right: 0;
@@ -88,14 +96,19 @@ ul.loudly-song-list__list {
     );
     width: 100%;
 
-    //adds specifity to overwrite row margin, allow full-width bottom
+    /*
+  adds specifity to overwrite row margin,
+  allow full-width bottom
+*/
     &#loudly-song-list-item__bottom-primary {
       margin: 0;
     }
   }
 
   &__title {
-    //adds top space to song title when wrapping occurs in sm devices
+    /*
+    adds top space to song title when wrapping occurs in sm devices
+  */
     @media only screen and (max-device-width: 768px) {
       padding-top: toRem(10);
     }
