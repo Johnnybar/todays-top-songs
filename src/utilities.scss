@@ -1,0 +1,15 @@
+//color vars
+
+$loudly-light-grey: #d3d3d3;
+$loudly-grey: #00000029;
+$loudly-black: black;
+$loudly-white: white;
+$loudly-green: #04f8c2;
+$loudly-light-green: #b0e975;
+
+//functions
+
+@function toRem($value) {
+  $remValue: ($value / 16) + rem;
+  @return $remValue;
+}
