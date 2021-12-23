@@ -1,7 +1,7 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SongListItem } from "./SongListItem";
 
-export function SongList(): ReactElement {
+export const SongList = () => {
   const [allSongs, setSongs] = useState<Optional<Song[]>>();
   const [listIsUpdated, setListisUpdated] = useState<Boolean>(false);
 
@@ -57,4 +57,4 @@ export function SongList(): ReactElement {
       </ul>
     </div>
   );
-}
+};

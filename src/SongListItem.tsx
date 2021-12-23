@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { AudioPlayer } from "./AudioPlayer";
 import { motion } from "framer-motion";
@@ -7,7 +7,7 @@ interface Props {
   song: Song;
   likeSong: likeSong;
 }
-export function SongListItem({ song, likeSong }: Props): ReactElement {
+export const SongListItem = ({ song, likeSong }: Props) => {
   const [clicked, setClicked] = useState<Boolean>(false);
   //add temporary notification when song has been liked
   useEffect(() => {
@@ -74,4 +74,4 @@ export function SongListItem({ song, likeSong }: Props): ReactElement {
       )}
     </motion.li>
   );
-}
+};

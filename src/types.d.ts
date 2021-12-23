@@ -10,3 +10,5 @@ interface Song {
 type likeSong = (selectedSong: Song) => void;
 
 type Optional<T> = T | null;
+
+type SongList = { render: () => void };
