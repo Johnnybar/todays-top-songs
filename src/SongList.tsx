@@ -33,7 +33,7 @@ export function SongList(): ReactElement {
         requestOptions
       )
         .then(() => {
-          setListisUpdated(true);
+          setListisUpdated(!listIsUpdated);
         })
         .catch((error) => console.log("an error has occurred: ", error));
     }
