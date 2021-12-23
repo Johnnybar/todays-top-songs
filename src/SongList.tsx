@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { SongListItem } from "./SongListItem";
 
 export function SongList(): ReactElement {
-  const [allSongs, setSongs] = useState<Song[] | undefined>();
+  const [allSongs, setSongs] = useState<Optional<Song[]>>();
   const [updatedList, setUpdatedList] = useState<Boolean>(false);
 
   //retrieve song list, update after POST request
