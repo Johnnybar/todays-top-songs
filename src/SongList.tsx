@@ -3,7 +3,7 @@ import { SongListItem } from "./SongListItem";
 
 export function SongList(): ReactElement {
   const [allSongs, setSongs] = useState<Optional<Song[]>>();
-  const [updatedList, setUpdatedList] = useState<Boolean>(false);
+  const [listIsUpdated, setListisUpdated] = useState<Boolean>(false);
 
   //retrieve song list, update after POST request
   useEffect(() => {
@@ -12,12 +12,12 @@ export function SongList(): ReactElement {
     })
       .then((res) => res.json())
       .then((response) => {
-        setSongs(response);
+        setSongs(response as Song[]);
       })
       .catch((error) => console.log(error));
-  }, [updatedList]);
+  }, [listIsUpdated]);
 
-  //send POST request on like, set updatedList to true => run GET request again
+  //send POST request on like, set listIsUpdated to true => run GET request again
   const likeSong = (selectedSong: Song) => {
     if (allSongs) {
       const songToLike = allSongs.filter((song) => song === selectedSong);
@@ -33,7 +33,7 @@ export function SongList(): ReactElement {
         requestOptions
       )
         .then(() => {
-          setUpdatedList(true);
+          setListisUpdated(true);
         })
         .catch((error) => console.log("an error has occurred: ", error));
     }
