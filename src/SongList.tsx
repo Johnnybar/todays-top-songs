@@ -43,7 +43,7 @@ export const SongList = () => {
     <div className="loudly-song-list container">
       <div className="row">
         <div className="col-sm-12 text-center">
-          <h1 className="loudly-song-list__top-heading">Top 6 Songs</h1>
+          <h1 className="loudly-song-list__top-heading">Top Songs</h1>
         </div>
       </div>
       <ul className="loudly-song-list__list row">
