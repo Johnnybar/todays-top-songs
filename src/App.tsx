@@ -6,14 +6,14 @@ function App() {
   return (
     <>
       <header className="loudly-header">
-        <h1 className="loudly-header__heading">Loudly App</h1>
+        <h1 className="loudly-header__heading">Who Charted</h1>
       </header>
       <div className="loudly-content-wrapper">
         <SongList />
       </div>
       <footer className="loudly-footer">
         <p className="loudly-footer__text text-center">
-          Loudly: AI Powered, Royalty Free Music Solutions
+          Who Charted: Top Tracks of the Day
         </p>
       </footer>
     </>
